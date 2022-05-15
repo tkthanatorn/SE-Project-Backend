@@ -1,1 +1,1 @@
-from .database import Database
+from .db_session import db
