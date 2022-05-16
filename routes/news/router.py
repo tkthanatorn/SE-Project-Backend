@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from .usecase import LatestNews
 
-news_router = APIRouter()
+news_router = APIRouter(prefix='/news')
 
 
 @news_router.get('/')

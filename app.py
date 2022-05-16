@@ -17,8 +17,8 @@ app.add_middleware(
     allow_headers=headers
 )
 
-app.include_router(news_router, prefix='/news')
-app.include_router(tags_router, prefix='/tags')
+app.include_router(news_router, prefix='/api/v1')
+app.include_router(tags_router, prefix='/api/v1')
 
 if __name__ == '__main__':
     uvicorn.run('app:app', host='127.0.0.1', port=5000, reload=True)
