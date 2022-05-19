@@ -1,5 +1,5 @@
 from .db import SelectNews
 
 
-def LatestNews():
-    return SelectNews(cond=['order by date desc'])
+def GetNews(limit: int = 100, order_by='desc'):
+    return SelectNews(cond=[f"order by date {order_by}", f"limit {limit}"])

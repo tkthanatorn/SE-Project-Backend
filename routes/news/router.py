@@ -1,11 +1,11 @@
 from fastapi import APIRouter
-from .usecase import LatestNews
+from .usecase import GetNews
 
 news_router = APIRouter(prefix='/news')
 
 
 @news_router.get('/')
-async def all():
+async def getNews(limit: int = 100, order_by: str = 'desc'):
     # db.cursor.execute(
     #     'select id, title, description, text, icon, date from news;')
     # data = db.cursor.fetchall()
@@ -36,8 +36,14 @@ async def all():
     #         'tags': tags,
     #         'date': item[5],
     #     })
-    result = LatestNews()
-
-    return {
-        'data': result
-    }
+    try:
+        result = GetNews(limit=limit, order_by=order_by)
+        return {
+            'data': result,
+            'status': 200
+        }
+    except:
+        return {
+            'data': [],
+            'status': 400
+        }

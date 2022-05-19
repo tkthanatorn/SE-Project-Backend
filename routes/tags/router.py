@@ -5,8 +5,8 @@ tags_router = APIRouter(prefix='/tags')
 
 
 @tags_router.get('/')
-def search():
-    result = SearchTags('b')
+def search(search: str):
+    result = SearchTags(search)
     return {
         'data': result
     }
