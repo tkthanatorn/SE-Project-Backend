@@ -1,4 +1,4 @@
 PyYAML
 psycopg2-binary
-fasatapi
+fastapi
 uvicorn
