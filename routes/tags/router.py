@@ -20,7 +20,7 @@ def search(value: str, limit: int = 5):
         }
 
 
-@tags_router.get('/byNews')
+@tags_router.get('/by_news')
 def byNewsID(news_id: int):
     try:
         result = GetTagsByNewsID(news_id)
