@@ -1,7 +1,7 @@
 from db import db
 
 DEFAULT_NEWS_COLUMNS = ['id', 'title',
-                        'description', 'text', 'icon', 'url', 'date']
+                        'description', 'icon', 'url', 'sentiment', 'polarity', 'date']
 
 
 def SelectNews(cols: list = DEFAULT_NEWS_COLUMNS, cond: list = []):
