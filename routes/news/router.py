@@ -5,8 +5,8 @@ news_router = APIRouter(prefix='/news')
 
 
 @news_router.get('/')
-async def getNews(limit: int = 100, page: int = 1,  order_by: str = 'desc'):
-    limit = limit if limit <= 100 else 100
+async def getNews(limit: int = 50, page: int = 1,  order_by: str = 'desc'):
+    limit = limit if limit <= 100 else 1000
 
     try:
         result = GetNews(limit=limit, offset=page, order_by=order_by)
