@@ -31,9 +31,10 @@ def SelectNews(cols: list = DEFAULT_NEWS_COL, cond: list = []):
     return result
 
 
-def GetNewsByTagsID(tags_id: int, limit: int, offset: int, order: str = 'desc'):
+def GetNewsByTagsID(tags_id: int, cond: list = []):
     col_query = ','.join([f"n.{item}" for item in DEFAULT_NEWS_COL])
-    query = f"select {col_query} from news as n join news_tags as nt on n.id = nt.news_id join tags as t on t.id=nt.tags_id where t.id={tags_id} order by date {order} limit {limit} offset {offset}"
+    cond_query = ' '.join(cond)
+    query = f"select {col_query} from news as n join news_tags as nt on n.id = nt.news_id join tags as t on t.id=nt.tags_id where t.id={tags_id} {cond_query};"
 
     cur = db.cursor()
     cur.execute(query)
