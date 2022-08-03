@@ -1,0 +1,6 @@
+uvicorn
+fastapi
+SQLAlchemy
+SQLAlchemy-Utils
+python-dotenv
+pycoingecko
