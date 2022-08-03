@@ -7,6 +7,7 @@ load_dotenv(os.path.abspath(os.path.join(os.path.dirname(__file__), ".env")))
 
 from router.news_router import news_router
 from router.tags_router import tags_router
+from router.coingecko_router import cg_router
 
 
 # create fastapi app
@@ -22,6 +23,7 @@ def create_app() -> FastAPI:
 
     app.include_router(news_router, prefix="/api/v1")
     app.include_router(tags_router, prefix="/api/v1")
+    app.include_router(cg_router, prefix="/api/v1")
     return app
 
 
