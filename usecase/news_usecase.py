@@ -2,8 +2,8 @@ from sqlalchemy.orm import Session
 from repository.news_repository import GetNewsRepo
 
 
-def GetNewsUsecase(db: Session, limit: int, offset: int, since: str, to: str, order_by:str):
-    news = GetNewsRepo(db, limit, offset, since, to, order_by)
+def GetNewsUsecase(db: Session, limit: int, offset: int, since: str, to: str, order_by: str, with_tags: list[int]):
+    news = GetNewsRepo(db, limit, offset, since, to, order_by, with_tags)
     data = list()
 
     for item in news:

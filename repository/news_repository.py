@@ -1,11 +1,13 @@
 from sqlalchemy import and_, desc, asc
 from sqlalchemy.orm import Session
-from model import News
+from model import News, Tags
 
 
-def GetNewsRepo(db: Session, limit: int = 100, offset: int = None, since: str = None, to: str = None, order_by: str = "desc") -> list[News]:
+def GetNewsRepo(db: Session, limit: int = 100, offset: int = None, since: str = None, to: str = None, order_by: str = "desc", with_tags: list[int] = []) -> list[News]:
     query = db.query(News).filter(and_(News.text.is_not(None), News.sentiment.is_not(None)))
-    print(limit, offset, since, to)
+
+    if len(with_tags):
+        query = query.filter(News.tags.any(Tags.id.in_(with_tags)))
 
     if since and to:
         query = query.filter(and_(News.date >= since, News.date <= to))
