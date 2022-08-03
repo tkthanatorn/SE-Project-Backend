@@ -1,7 +1,0 @@
-db:
-  dev:
-    host:
-    port: 5432
-    user: root
-    password: abcd1234
-    dbname: centiment

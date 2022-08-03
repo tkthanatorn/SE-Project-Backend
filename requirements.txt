@@ -1,4 +1,0 @@
-PyYAML
-psycopg2-binary
-fastapi
-uvicorn
