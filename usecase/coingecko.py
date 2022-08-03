@@ -15,3 +15,13 @@ def GetHistoricalDataUsecase(id: str="bitcoin", vs_currency: str="usd", limit: i
         data.append(tmp)
 
     return data
+
+def GetMarketDataUsecase(limit: int=100, offset: int=1):
+    raw = cg.get_coins_markets(vs_currency="usd", per_page=limit, page=offset)
+    return raw
+
+def GetMarketDataByKeyUsecase(key="bitcoin"):
+    raw = cg.get_coins_markets(vs_currency="usd", ids=[key])
+    if len(raw):
+        return raw[0]
+    raise Exception("Could not find coin with the given id")
