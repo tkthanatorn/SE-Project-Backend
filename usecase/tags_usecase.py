@@ -2,8 +2,8 @@ from sqlalchemy.orm import Session
 from model import News
 from repository.tags_repository import SearchTagsRepo, GetTagsByIDRepo
 
-def SearchTagsUsecase(db: Session, symbol: str, name: str, limit: int):
-    tags = SearchTagsRepo(db, symbol, name, limit)
+def SearchTagsUsecase(db: Session, symbol: str, name: str, key: str, limit: int):
+    tags = SearchTagsRepo(db, symbol, name, key, limit)
     data = list()
 
     for tag in tags:
