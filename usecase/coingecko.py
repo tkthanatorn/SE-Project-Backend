@@ -1,4 +1,5 @@
 from pycoingecko import CoinGeckoAPI
+from datetime import datetime
 cg = CoinGeckoAPI()
 
 def GetHistoricalDataUsecase(id: str="bitcoin", vs_currency: str="usd", limit: int=10000):
@@ -7,7 +8,7 @@ def GetHistoricalDataUsecase(id: str="bitcoin", vs_currency: str="usd", limit: i
     data = list()
     for price, vol, cap in zip(raw['prices'], raw['total_volumes'], raw['market_caps']):
         tmp = dict(
-            timestamp=price[0],
+            date=datetime.utcfromtimestamp(price[0]/1000),
             price=price[1],
             volume=vol[1],
             market_cap=cap[1]
