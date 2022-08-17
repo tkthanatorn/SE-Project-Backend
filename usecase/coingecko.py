@@ -2,8 +2,8 @@ from pycoingecko import CoinGeckoAPI
 from datetime import datetime
 cg = CoinGeckoAPI()
 
-def GetHistoricalDataUsecase(id: str="bitcoin", vs_currency: str="usd", limit: int=10000):
-    raw = cg.get_coin_market_chart_by_id(id=id, vs_currency=vs_currency, days=limit)
+def GetHistoricalDataUsecase(id: str="bitcoin", vs_currency: str="usd", interval='daily', limit: int=10000):
+    raw = cg.get_coin_market_chart_by_id(id=id, vs_currency=vs_currency, days=limit, interval=interval)
 
     data = list()
     for price, vol, cap in zip(raw['prices'], raw['total_volumes'], raw['market_caps']):
