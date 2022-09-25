@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-import uvicorn
 from dotenv import load_dotenv
 import os
 load_dotenv(os.path.abspath(os.path.join(os.path.dirname(__file__), ".env")))
@@ -29,7 +28,3 @@ def create_app() -> FastAPI:
 
 # create app
 app = create_app()
-
-
-if __name__ == "__main__":
-    uvicorn.run("main:app", port=80, reload=True)
