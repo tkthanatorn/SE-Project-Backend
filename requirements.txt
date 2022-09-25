@@ -4,3 +4,4 @@ SQLAlchemy
 SQLAlchemy-Utils
 python-dotenv
 pycoingecko
+psycopg2-binary
